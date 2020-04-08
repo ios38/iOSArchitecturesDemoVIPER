@@ -15,6 +15,7 @@ protocol SearchViewProtocol: class {
 
 class SearchViewController: UIViewController {
     var presenter: SearchPresenterProtocol!
+    private let builder: SearchBuilderProtocol = SearchBuilder()
     var selfToCourseDetailsSegueName = "showDetails"
     // MARK: - Private Properties
     
@@ -40,6 +41,9 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        builder.build(with: self)
+        
         self.searchView.searchBar.delegate = self
         self.searchView.tableView.register(AppCell.self, forCellReuseIdentifier: Constants.reuseIdentifier)
         self.searchView.tableView.delegate = self
@@ -106,6 +110,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("SearchViewController: presenter.appsCount: \(presenter.appsCount)")
         return presenter.appsCount ?? 0
         //return searchResults.count
     }
@@ -115,6 +120,7 @@ extension SearchViewController: UITableViewDataSource {
         guard let cell = dequeuedCell as? AppCell else { return dequeuedCell }
         guard let app = presenter.app(atIndex: indexPath) else { return dequeuedCell }
         //let app = self.searchResults[indexPath.row]
+        print("SearchViewController: app: \(app)")
         let cellModel = AppCellModelFactory.cellModel(from: app)
         cell.configure(with: cellModel)
         return cell
@@ -146,7 +152,7 @@ extension SearchViewController: UISearchBarDelegate {
             searchBar.resignFirstResponder()
             return
         }
-        presenter.viewDidLoad(with: query)
+        presenter.viewDidSearch(with: query)
         //self.requestApps(with: query)
     }
 }

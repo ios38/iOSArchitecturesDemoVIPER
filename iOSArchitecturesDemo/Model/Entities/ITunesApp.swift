@@ -21,7 +21,7 @@ public struct ITunesApp: Codable {
     public let averageRatingForCurrentVersion: Float?
     public let size: Bytes?
     public let iconUrl: String?
-    public let screenshotUrls: [String]
+    public let screenshotUrls: [String]?
     
     // MARK: - Codable
     
@@ -63,7 +63,7 @@ public struct ITunesApp: Codable {
                   averageRatingForCurrentVersion: Float?,
                   size: Bytes?,
                   iconUrl: String?,
-                  screenshotUrls: [String]) {
+                  screenshotUrls: [String]?) {
         self.appName = appName
         self.appUrl = appUrl
         self.company = company
@@ -75,4 +75,18 @@ public struct ITunesApp: Codable {
         self.iconUrl = iconUrl
         self.screenshotUrls = screenshotUrls
     }
+    
+    init(appName: String) {
+        self.appName = appName
+        self.appUrl = ""
+        self.company = ""
+        self.companyUrl = ""
+        self.appDescription = ""
+        self.averageRating = 0.0
+        self.averageRatingForCurrentVersion = 0.0
+        self.size = 0
+        self.iconUrl = ""
+        self.screenshotUrls = []
+    }
+
 }

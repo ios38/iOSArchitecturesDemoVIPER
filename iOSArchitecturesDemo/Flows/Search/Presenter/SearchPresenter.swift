@@ -11,7 +11,9 @@ import Foundation
 protocol SearchPresenterProtocol: class {
     var apps: [ITunesApp] { get }
     var appsCount: Int? { get }
-    func viewDidLoad(with query: String)
+    
+    func viewDidSearch(with query: String)
+
     func app(atIndex indexPath: IndexPath) -> ITunesApp?
     func showAppDetails(for indexPath: IndexPath)
 }
@@ -30,20 +32,27 @@ class SearchPresenter {
     required init(view: SearchViewProtocol) {
         self.view = view
     }
+    
+    //var viewInput: (UIViewController & SearchViewInput)?
+    
+    private func requestApps(with query: String) {
+        self.interactor.requestApps(with: query)
+    }
+
 }
 
 // MARK: - SearchPresenterProtocol
 extension SearchPresenter: SearchPresenterProtocol {
-    func viewDidLoad(with query: String) {
-        //interactor.fetchCourses()
+    func viewDidSearch(with query: String) {
+        self.requestApps(with: query)
     }
-    
+
     func app(atIndex indexPath: IndexPath) -> ITunesApp? {
-        //if courses.indices.contains(indexPath.row) {
-        //    return courses[indexPath.row]
-        //} else {
+        if apps.indices.contains(indexPath.row) {
+            return apps[indexPath.row]
+        } else {
             return nil
-        //}
+        }
     }
     
     func showAppDetails(for indexPath: IndexPath) {
@@ -56,8 +65,9 @@ extension SearchPresenter: SearchPresenterProtocol {
 
 // MARK: - SearchInteractorOutputProtocol
 extension SearchPresenter: SearchInteractorOutputProtocol {
-    //func coursesDidReceive(_ courses: [Course]) {
-    //    self.courses = courses
-    //    view.reloadData()
-    //}
+
+    func appsDidReceive(_ apps: [ITunesApp]) {
+        self.apps = apps
+        view.reloadData()
+    }
 }
