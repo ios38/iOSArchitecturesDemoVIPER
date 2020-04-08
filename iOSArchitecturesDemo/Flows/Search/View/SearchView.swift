@@ -32,7 +32,7 @@ final class SearchView: UIView {
     // MARK: - UI
     
     private func configureUI() {
-        self.backgroundColor = .white
+        //self.backgroundColor = .white
         self.addSearchBar()
         self.addTableView()
         self.addEmptyResultView()
@@ -56,7 +56,7 @@ final class SearchView: UIView {
     
     private func addEmptyResultView() {
         self.emptyResultView.translatesAutoresizingMaskIntoConstraints = false
-        self.emptyResultView.backgroundColor = .white
+        //self.emptyResultView.backgroundColor = .white
         self.emptyResultView.isHidden = true
         
         self.emptyResultLabel.translatesAutoresizingMaskIntoConstraints = false

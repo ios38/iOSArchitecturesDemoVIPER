@@ -15,7 +15,7 @@ final class AppCell: UITableViewCell {
     private(set) lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .black
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16.0)
         return label
     }()
