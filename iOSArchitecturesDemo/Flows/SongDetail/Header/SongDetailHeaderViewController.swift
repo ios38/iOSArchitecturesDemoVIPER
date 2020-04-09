@@ -15,7 +15,6 @@ final class SongDetailHeaderViewController: UIViewController {
     private let song: ITunesSong
     
     private let imageDownloader = ImageDownloader()
-
     private var songDetailHeaderView: SongDetailHeaderView {
         return self.view as! SongDetailHeaderView
     }
@@ -52,6 +51,7 @@ final class SongDetailHeaderViewController: UIViewController {
         self.songDetailHeaderView.collectionNameLabel.text = song.collectionName
         self.songDetailHeaderView.genreLabel.text = song.primaryGenreName
         self.songDetailHeaderView.releaseDateLabel.text = " • " + song.releaseDate
+        self.songDetailHeaderView.timeLabel.text = ""
     }
     
     private func downloadImage() {

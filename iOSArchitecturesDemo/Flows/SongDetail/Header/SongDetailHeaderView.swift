@@ -61,16 +61,23 @@ class SongDetailHeaderView: UIView {
         return label
     }()
 
-    /*
-    private(set) lazy var openButton: UIButton = {
+    private(set) lazy var playButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Открыть", for: .normal)
+        button.setImage(UIImage(systemName: "play"), for: .normal)
         button.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         button.layer.cornerRadius = 16.0
         return button
-    }()*/
-    
+    }()
+
+    private(set) lazy var timeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 20.0)
+        return label
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupLayout()
@@ -90,8 +97,9 @@ class SongDetailHeaderView: UIView {
         self.addSubview(self.collectionNameLabel)
         self.addSubview(self.genreLabel)
         self.addSubview(self.releaseDateLabel)
-        //self.addSubview(self.openButton)
-        
+        self.addSubview(self.playButton)
+        self.addSubview(self.timeLabel)
+
         NSLayoutConstraint.activate([
             self.imageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 12.0),
             self.imageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16.0),
@@ -120,11 +128,14 @@ class SongDetailHeaderView: UIView {
             self.releaseDateLabel.leftAnchor.constraint(equalTo: self.genreLabel.rightAnchor),
             self.releaseDateLabel.rightAnchor.constraint(equalTo: self.rightAnchor),
 
-            //self.openButton.leftAnchor.constraint(equalTo: self.imageView.rightAnchor, constant: 16.0),
-            //self.openButton.bottomAnchor.constraint(equalTo: self.imageView.bottomAnchor),
-            //self.openButton.widthAnchor.constraint(equalToConstant: 80.0),
-            //self.openButton.heightAnchor.constraint(equalToConstant: 32.0)
+            self.playButton.leftAnchor.constraint(equalTo: self.imageView.rightAnchor, constant: 16.0),
+            self.playButton.bottomAnchor.constraint(equalTo: self.imageView.bottomAnchor),
+            self.playButton.widthAnchor.constraint(equalToConstant: 32.0),
+            self.playButton.heightAnchor.constraint(equalToConstant: 32.0),
             
+            self.timeLabel.leftAnchor.constraint(equalTo: self.playButton.rightAnchor, constant: 16.0),
+            self.timeLabel.bottomAnchor.constraint(equalTo: self.playButton.bottomAnchor),
+            self.timeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 16.0)
         ])
     }
 }
