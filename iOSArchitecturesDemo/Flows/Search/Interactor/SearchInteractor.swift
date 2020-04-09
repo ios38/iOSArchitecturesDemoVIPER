@@ -11,11 +11,11 @@ import Foundation
 import Alamofire
 
 protocol SearchInteractorProtocol: class {
-    func requestApps(with query: String, searchMode: SearchMode)
+    func requestItems(with query: String, searchMode: SearchMode)
 }
 
 protocol SearchInteractorOutputProtocol: class {
-    func appsDidReceive(_ apps: [Any])
+    func itemsDidReceive(_ items: [Any])
 }
 
 class SearchInteractor {
@@ -29,14 +29,13 @@ class SearchInteractor {
 }
 
 extension SearchInteractor: SearchInteractorProtocol {
-    func requestApps(with query: String, searchMode: SearchMode) {
+    func requestItems(with query: String, searchMode: SearchMode) {
         switch searchMode {
         case .apps:
             self.searchService.getApps(forQuery: query) { [weak self] results in
                 results
                     .withValue { apps in
-                        print("SearchInteractor: apps.count: \(apps.count)")
-                        self?.presenter.appsDidReceive(apps)
+                        self?.presenter.itemsDidReceive(apps)
                 }
                 .withError { error in
                     print(error)
@@ -46,8 +45,7 @@ extension SearchInteractor: SearchInteractorProtocol {
             self.searchService.getSongs(forQuery: query) { [weak self] results in
                 results
                     .withValue { songs in
-                        print("SearchInteractor: apps.count: \(songs.count)")
-                        self?.presenter.appsDidReceive(songs)
+                        self?.presenter.itemsDidReceive(songs)
                 }
                 .withError { error in
                     print(error)

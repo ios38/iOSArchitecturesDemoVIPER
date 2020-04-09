@@ -56,24 +56,25 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.appsCount ?? 0
+        return presenter.itemsCount ?? 0
         //return searchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch searchMode {
+            
         case .apps:
             let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: Constants.appReuseId, for: indexPath)
-            guard let data = presenter.app(atIndex: indexPath) else { return dequeuedCell }
+            guard let data = presenter.item(atIndex: indexPath) else { return dequeuedCell }
             guard let cell = dequeuedCell as? AppCell else { return dequeuedCell }
-            //let app = self.searchResults[indexPath.row]
             let app = data as! ITunesApp
             let cellModel = AppCellModelFactory.cellModel(from: app)
             cell.configure(with: cellModel)
             return cell
+            
         case .songs:
             let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: Constants.songReuseId, for: indexPath)
-            guard let data = presenter.app(atIndex: indexPath) else { return dequeuedCell }
+            guard let data = presenter.item(atIndex: indexPath) else { return dequeuedCell }
             guard let cell = dequeuedCell as? SongCell else { return dequeuedCell }
             let song = data as! ITunesSong
             let cellModel = SongCellModelFactory.cellModel(from: song)
@@ -89,10 +90,6 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         presenter.viewDidSelect(at: indexPath, searchMode: searchMode)
-        //let app = searchResults[indexPath.row]
-        //let appDetaillViewController = AppDetailViewController()
-        //appDetaillViewController.app = app
-        //navigationController?.pushViewController(appDetaillViewController, animated: true)
     }
 }
 
@@ -103,7 +100,6 @@ extension SearchViewController: SearchModeControlDelegate {
         self.searchMode = searchMode
         print("ViewController: searchModeSelected: \(self.searchMode)")
         searchBarSearchButtonClicked(self.searchView.searchBar)
-        //self.searchView.tableView.reloadData()
     }
 }
 
@@ -120,7 +116,6 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         presenter.viewDidSearch(with: query, searchMode: searchMode)
-        //self.requestApps(with: query)
     }
 }
 
