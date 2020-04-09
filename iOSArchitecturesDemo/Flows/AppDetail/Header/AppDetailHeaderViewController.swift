@@ -2,21 +2,20 @@
 //  AppDetailHeaderViewController.swift
 //  iOSArchitecturesDemo
 //
-//  Created by Elena Gracheva on 26.03.2020.
+//  Created by Maksim Romanov on 28.03.2020.
 //  Copyright © 2020 ekireev. All rights reserved.
 //
 
 import UIKit
 
-
 final class AppDetailHeaderViewController: UIViewController {
-    
+
     // MARK: - Properties
     
     private let app: ITunesApp
     
     private let imageDownloader = ImageDownloader()
-    
+
     private var appDetailHeaderView: AppDetailHeaderView {
         return self.view as! AppDetailHeaderView
     }
@@ -55,7 +54,8 @@ final class AppDetailHeaderViewController: UIViewController {
     
     private func downloadImage() {
         guard let url = self.app.iconUrl else { return }
-        self.imageDownloader.getImage(fromUrl: url) { [weak self] (image, _) in
+        let imageDownloaderProxy = ImageDownloaderProxy(imageDownloader: imageDownloader)
+        imageDownloaderProxy.getImage(fromUrl: url) { [weak self] (image, _) in
             self?.appDetailHeaderView.imageView.image = image
         }
     }
