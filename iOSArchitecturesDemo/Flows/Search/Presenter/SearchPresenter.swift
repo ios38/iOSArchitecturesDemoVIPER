@@ -9,13 +9,13 @@
 import Foundation
 
 protocol SearchPresenterProtocol: class {
-    var apps: [ITunesApp] { get }
+    var apps: [Any] { get }
     var appsCount: Int? { get }
     
-    func app(atIndex indexPath: IndexPath) -> ITunesApp?
+    func app(atIndex indexPath: IndexPath) -> Any?
 
-    func viewDidSearch(with query: String)
-    func viewDidSelect(at indexPath: IndexPath)
+    func viewDidSearch(with query: String, searchMode: SearchMode)
+    func viewDidSelect(at indexPath: IndexPath, searchMode: SearchMode)
 }
 
 class SearchPresenter {
@@ -24,7 +24,7 @@ class SearchPresenter {
     var interactor: SearchInteractorProtocol!
     var router: SearchRouterProtocol!
     
-    var apps: [ITunesApp] = []
+    var apps: [Any] = []
     var appsCount: Int? {
         apps.count
     }
@@ -33,15 +33,15 @@ class SearchPresenter {
         self.view = view
     }
     
-    private func requestApps(with query: String) {
-        self.interactor.requestApps(with: query)
+    private func requestApps(with query: String, searchMode: SearchMode) {
+        self.interactor.requestApps(with: query, searchMode: searchMode)
     }
 
 }
 
 // MARK: - SearchPresenterProtocol
 extension SearchPresenter: SearchPresenterProtocol {
-    func app(atIndex indexPath: IndexPath) -> ITunesApp? {
+    func app(atIndex indexPath: IndexPath) -> Any? {
         if apps.indices.contains(indexPath.row) {
             return apps[indexPath.row]
         } else {
@@ -49,14 +49,14 @@ extension SearchPresenter: SearchPresenterProtocol {
         }
     }
     
-    func viewDidSearch(with query: String) {
-        self.requestApps(with: query)
+    func viewDidSearch(with query: String, searchMode: SearchMode) {
+        self.requestApps(with: query, searchMode: searchMode)
     }
 
-    func viewDidSelect(at indexPath: IndexPath) {
+    func viewDidSelect(at indexPath: IndexPath, searchMode: SearchMode) {
         if apps.indices.contains(indexPath.row) {
             let app = apps[indexPath.row]
-            router.openAppDetailsViewController(with: app)
+            router.openDetailsViewController(with: app, searchMode: searchMode)
         }
     }
 }
@@ -64,8 +64,13 @@ extension SearchPresenter: SearchPresenterProtocol {
 // MARK: - SearchInteractorOutputProtocol
 extension SearchPresenter: SearchInteractorOutputProtocol {
 
-    func appsDidReceive(_ apps: [ITunesApp]) {
-        self.apps = apps
+    func appsDidReceive(_ apps: [Any]) {
+        self.apps = apps 
         view.reloadData()
     }
+    /*
+    func songsDidReceive(_ songs: [ITunesSong]) {
+        self.songs = songs
+        view.reloadData()
+    }*/
 }

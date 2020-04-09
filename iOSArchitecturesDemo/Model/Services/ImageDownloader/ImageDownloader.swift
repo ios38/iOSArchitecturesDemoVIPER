@@ -11,6 +11,10 @@ import Alamofire
 
 typealias DownloadImageCompletion = (_ image: UIImage?, _ error: Error?) -> Void
 
+protocol BaseImageDownloader {
+    func getImage(fromUrl url: URLConvertible, completion: @escaping DownloadImageCompletion)
+}
+
 final class ImageDownloader {
     
     public func getImage(fromUrl url: URLConvertible, completion: @escaping DownloadImageCompletion) {
@@ -38,5 +42,19 @@ final class ImageDownloader {
             
             completion(image, nil)
         })
+    }
+}
+
+class ImageDownloaderProxy: BaseImageDownloader {
+    
+    var imageDownloader: ImageDownloader
+
+    init(imageDownloader: ImageDownloader) {
+        self.imageDownloader = imageDownloader
+    }
+
+    func getImage(fromUrl url: URLConvertible, completion: @escaping DownloadImageCompletion) {
+        print("ImageDownloaderProxy: Getting image with \(url)")
+        self.imageDownloader.getImage(fromUrl: url, completion: completion)
     }
 }

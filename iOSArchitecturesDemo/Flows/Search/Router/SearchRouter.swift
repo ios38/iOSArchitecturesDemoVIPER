@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SearchRouterProtocol: class {
-    func openAppDetailsViewController(with app: ITunesApp)
+    func openDetailsViewController(with item: Any, searchMode: SearchMode)
 }
 
 class SearchRouter {
@@ -22,11 +22,23 @@ class SearchRouter {
 }
 
 extension SearchRouter: SearchRouterProtocol {
-    func openAppDetailsViewController(with app: ITunesApp) {
-        print("SearchRouter: openAppDetailsViewController with (\(app.appName)")
+    func openDetailsViewController(with item: Any, searchMode: SearchMode) {
+        
+        switch searchMode {
+        case .apps:
+            let app = item as! ITunesApp
+            print("SearchRouter: openDetailsViewController with \(app.appName)")
+            
+            let appDetaillViewController = AppDetailViewController(app: app)
+            self.viewController?.navigationController?.pushViewController(appDetaillViewController, animated: true)
+            
+        case .songs:
+            let song = item as! ITunesSong
+            print("SearchRouter: openDetailsViewController with \(song.trackName)")
 
-        let appDetaillViewController = AppDetailViewController(app: app)
-        //appDetaillViewController.view.backgroundColor = .white
-        self.viewController?.navigationController?.pushViewController(appDetaillViewController, animated: true)
+            let songDetaillViewController = SongDetailViewController(song: song)
+            self.viewController?.navigationController?.pushViewController(songDetaillViewController, animated: true)
+        }
+        
     }
 }
