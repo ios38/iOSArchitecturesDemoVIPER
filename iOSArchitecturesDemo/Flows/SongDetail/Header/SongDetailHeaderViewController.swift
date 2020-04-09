@@ -52,6 +52,7 @@ final class SongDetailHeaderViewController: UIViewController {
         self.songDetailHeaderView.collectionNameLabel.text = song.collectionName
         self.songDetailHeaderView.genreLabel.text = song.primaryGenreName
         self.songDetailHeaderView.releaseDateLabel.text = " • " + song.releaseDate
+        self.songDetailHeaderView.timeLabel.text = "0.00"
     }
     
     private func downloadImage() {
