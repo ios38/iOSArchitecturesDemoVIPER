@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5048E2C3243F20680088B2B7 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5048E2C2243F20680088B2B7 /* DescriptionViewController.swift */; };
+		5048E2C5243F206F0088B2B7 /* AppDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5048E2C4243F206F0088B2B7 /* AppDetailDescriptionView.swift */; };
+		5048E2C8243F20950088B2B7 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5048E2C7243F20950088B2B7 /* AlbumViewController.swift */; };
+		5048E2CA243F209C0088B2B7 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5048E2C9243F209C0088B2B7 /* AlbumView.swift */; };
+		5048E2CC243F20A20088B2B7 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5048E2CB243F20A20088B2B7 /* AlbumCell.swift */; };
 		50D51AF6243DCDE5002DF0E4 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D51AF5243DCDE5002DF0E4 /* SearchPresenter.swift */; };
 		50D51AF9243DD2FF002DF0E4 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D51AF8243DD2FF002DF0E4 /* SearchInteractor.swift */; };
 		50D51AFC243DD3BF002DF0E4 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D51AFB243DD3BF002DF0E4 /* SearchRouter.swift */; };
 		50D51AFF243DD4E0002DF0E4 /* SearchBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D51AFE243DD4E0002DF0E4 /* SearchBuilder.swift */; };
-		50D51B02243EC079002DF0E4 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D51B01243EC079002DF0E4 /* DescriptionViewController.swift */; };
 		50D51B05243EC0BE002DF0E4 /* AppDetailHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D51B04243EC0BE002DF0E4 /* AppDetailHeaderViewController.swift */; };
 		50D51B07243EC0C7002DF0E4 /* AppDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D51B06243EC0C7002DF0E4 /* AppDetailHeaderView.swift */; };
 		50D51B09243ECAC0002DF0E4 /* SongCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D51B08243ECAC0002DF0E4 /* SongCellModel.swift */; };
@@ -41,11 +45,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5048E2C2243F20680088B2B7 /* DescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		5048E2C4243F206F0088B2B7 /* AppDetailDescriptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailDescriptionView.swift; sourceTree = "<group>"; };
+		5048E2C7243F20950088B2B7 /* AlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		5048E2C9243F209C0088B2B7 /* AlbumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
+		5048E2CB243F20A20088B2B7 /* AlbumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		50D51AF5243DCDE5002DF0E4 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		50D51AF8243DD2FF002DF0E4 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
 		50D51AFB243DD3BF002DF0E4 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		50D51AFE243DD4E0002DF0E4 /* SearchBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBuilder.swift; sourceTree = "<group>"; };
-		50D51B01243EC079002DF0E4 /* DescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		50D51B04243EC0BE002DF0E4 /* AppDetailHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailHeaderViewController.swift; sourceTree = "<group>"; };
 		50D51B06243EC0C7002DF0E4 /* AppDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailHeaderView.swift; sourceTree = "<group>"; };
 		50D51B08243ECAC0002DF0E4 /* SongCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongCellModel.swift; sourceTree = "<group>"; };
@@ -99,6 +107,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5048E2C6243F20880088B2B7 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				5048E2CB243F20A20088B2B7 /* AlbumCell.swift */,
+				5048E2C9243F209C0088B2B7 /* AlbumView.swift */,
+				5048E2C7243F20950088B2B7 /* AlbumViewController.swift */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
 		50D51AF4243DCDB1002DF0E4 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,7 +152,8 @@
 		50D51B00243EC047002DF0E4 /* Description */ = {
 			isa = PBXGroup;
 			children = (
-				50D51B01243EC079002DF0E4 /* DescriptionViewController.swift */,
+				5048E2C4243F206F0088B2B7 /* AppDetailDescriptionView.swift */,
+				5048E2C2243F20680088B2B7 /* DescriptionViewController.swift */,
 			);
 			path = Description;
 			sourceTree = "<group>";
@@ -237,6 +256,7 @@
 		E0E1D2A72034A3780011E01A /* AppDetail */ = {
 			isa = PBXGroup;
 			children = (
+				5048E2C6243F20880088B2B7 /* Album */,
 				50D51B03243EC0A9002DF0E4 /* Header */,
 				50D51B00243EC047002DF0E4 /* Description */,
 				F8114FC222A3E74E00102830 /* View */,
@@ -517,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5048E2C3243F20680088B2B7 /* DescriptionViewController.swift in Sources */,
 				E0E1D399203AE62E0011E01A /* ITunesApp.swift in Sources */,
 				F8A97B352249898E00FB2C0E /* AppCell.swift in Sources */,
 				50D51AF9243DD2FF002DF0E4 /* SearchInteractor.swift in Sources */,
@@ -525,7 +546,9 @@
 				E0E1D387203AE45F0011E01A /* WebRequest.swift in Sources */,
 				F8A1E03C2248382F00FE6448 /* Monads.swift in Sources */,
 				E0E1D3D4203C4AA50011E01A /* UIColor+Extensions.swift in Sources */,
+				5048E2C8243F20950088B2B7 /* AlbumViewController.swift in Sources */,
 				E0E1D3D1203C48D70011E01A /* AppDetailViewController.swift in Sources */,
+				5048E2C5243F206F0088B2B7 /* AppDetailDescriptionView.swift in Sources */,
 				E0E1D358203ADC590011E01A /* NetworkManager.swift in Sources */,
 				E0E1D39C203AE6420011E01A /* ITunesSong.swift in Sources */,
 				E0E1D2952034A3350011E01A /* SearchViewController.swift in Sources */,
@@ -534,8 +557,10 @@
 				E0E1D39F203AE7400011E01A /* ImageDownloader.swift in Sources */,
 				50D51B0B243EDA53002DF0E4 /* SongCell.swift in Sources */,
 				F8114FBE22A3DBF400102830 /* SearchView.swift in Sources */,
+				5048E2CC243F20A20088B2B7 /* AlbumCell.swift in Sources */,
 				50D51B09243ECAC0002DF0E4 /* SongCellModel.swift in Sources */,
 				E0E1D395203AE5E20011E01A /* ITunesSearchResult.swift in Sources */,
+				5048E2CA243F209C0088B2B7 /* AlbumView.swift in Sources */,
 				50D51B12243EE538002DF0E4 /* SongDetailHeaderView.swift in Sources */,
 				E0E1D392203AE58B0011E01A /* ITunesSearchService.swift in Sources */,
 				50D51AFC243DD3BF002DF0E4 /* SearchRouter.swift in Sources */,
@@ -543,7 +568,6 @@
 				50D51AFF243DD4E0002DF0E4 /* SearchBuilder.swift in Sources */,
 				E0E1D2932034A3350011E01A /* AppDelegate.swift in Sources */,
 				50D51B05243EC0BE002DF0E4 /* AppDetailHeaderViewController.swift in Sources */,
-				50D51B02243EC079002DF0E4 /* DescriptionViewController.swift in Sources */,
 				E0E1D384203AE3620011E01A /* AppStartManager.swift in Sources */,
 				F8114FC122A3E5EE00102830 /* AppCellModel.swift in Sources */,
 			);
