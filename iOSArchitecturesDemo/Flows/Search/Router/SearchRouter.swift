@@ -6,7 +6,7 @@
 //  Copyright © 2020 ekireev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol SearchRouterProtocol: class {
     func openAppDetailsViewController(with app: ITunesApp)
@@ -23,9 +23,10 @@ class SearchRouter {
 
 extension SearchRouter: SearchRouterProtocol {
     func openAppDetailsViewController(with app: ITunesApp) {
-        //viewController.performSegue(
-        //    withIdentifier: viewController.selfToCourseDetailsSegueName,
-        //    sender: course
-        //)
+        print("SearchRouter: openAppDetailsViewController with (\(app.appName)")
+
+        let appDetaillViewController = AppDetailViewController(app: app)
+        //appDetaillViewController.view.backgroundColor = .white
+        self.viewController?.navigationController?.pushViewController(appDetaillViewController, animated: true)
     }
 }

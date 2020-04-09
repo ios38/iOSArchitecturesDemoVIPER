@@ -30,7 +30,7 @@ final class AppDetailView: UIView {
     // MARK: - UI
     
     private func configureUI() {
-        self.backgroundColor = .white
+        //self.backgroundColor = .white
         self.addImageView()
         self.addImageViewThrobber()
         self.setupConstraints()

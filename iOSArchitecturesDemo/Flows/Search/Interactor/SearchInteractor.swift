@@ -12,7 +12,6 @@ import Alamofire
 
 protocol SearchInteractorProtocol: class {
     func requestApps(with query: String)
-    //func requestApps(with query: String, completion: @escaping (Result<[ITunesApp]>) -> Void)
 }
 
 protocol SearchInteractorOutputProtocol: class {
@@ -31,15 +30,6 @@ class SearchInteractor {
 
 extension SearchInteractor: SearchInteractorProtocol {
     func requestApps(with query: String) {
-        /*
-        let apps = [
-            ITunesApp(appName: "Viber"),
-            ITunesApp(appName: "Whats'Up"),
-            ITunesApp(appName: "Viber")
-        ]
-        self.presenter.appsDidReceive(apps)
-        */
-        
         self.searchService.getApps(forQuery: query) { [weak self] results in
             results
                 .withValue { apps in
@@ -51,10 +41,4 @@ extension SearchInteractor: SearchInteractorProtocol {
             }
         }
     }
-
-    /*
-    func requestApps(with query: String, completion: @escaping (Result<[ITunesApp]>) -> Void) {
-        self.searchService.getApps(forQuery: query, then: completion)
-        
-    }*/
 }
